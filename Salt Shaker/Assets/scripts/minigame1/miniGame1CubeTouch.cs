@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class touchScript : MonoBehaviour {
+public class miniGame1CubeTouch : MonoBehaviour {
+	//miniGame1 cube movement through touching
 
 	public float xDirection = 1;
 	public float yDirection = 1;

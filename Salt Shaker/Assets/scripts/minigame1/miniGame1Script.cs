@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 
 public class miniGame1Script : MonoBehaviour {
+	//MiniGame1: make the cubes touch to get the cat
+
 	public GameObject cube;
 	public GameObject cat;
 	public Text DebugText;
@@ -26,9 +28,11 @@ public class miniGame1Script : MonoBehaviour {
 																	cube1.transform.localPosition.y,
 																	0), 1);
 		HashSet<Collider> cubesInCircle = new HashSet<Collider>(hitColliders);
+
+		//if at least the cubes we made are in the circle
 		if (allCubes.IsSubsetOf (cubesInCircle)) {
+			//make a cat with gotCatScript (prefab)
 			Instantiate (cat, new Vector3 (0, 0, 0), Quaternion.identity);
-			DebugText.text = "cat!";
 		} else {
 			DebugText.text = "";
 			foreach(Collider cube in cubesInCircle) {
@@ -36,6 +40,6 @@ public class miniGame1Script : MonoBehaviour {
 			}
 
 		}
-		cube1.GetComponent<touchScript>().xDirection = -1f;
+		cube1.GetComponent<miniGame1CubeTouch>().xDirection = -1f;
 	}
 }

@@ -245,9 +245,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73a83d54d15f2c4da1facf6fa3c06d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugText: {fileID: 31553126}
+  accelerometerUpdateInterval: 0.016666668
+  lowPassKernelWidthInSeconds: 1
+  shakeDetectionThreshold: 1
+  lowPassFilterFactor: 0
+  lowPassValue: {x: 0, y: 0, z: 0}
+--- !u!114 &36050760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36050758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98d093d28d026f4a9c77e89df39e788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Cat: {fileID: 1943567577109832, guid: b9200427903e46a4e9d8dd9d8a8b2742, type: 2}
   DebugText: {fileID: 31553126}
-  catRarity: 2000
+  catRarity: 200
   saltScale: 0.05
   saltScaleVariation: 0.3
   saltDensity: 15

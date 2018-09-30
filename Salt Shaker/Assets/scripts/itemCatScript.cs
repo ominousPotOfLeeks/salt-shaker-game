@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class itemCatScript : MonoBehaviour {
+	//Kinematic cat goes down at a constant SPEED
 
 	public float SPEED;
 

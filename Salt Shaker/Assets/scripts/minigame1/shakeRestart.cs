@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class shakeScript : MonoBehaviour {
+public class shakeRestart : MonoBehaviour {
+	//In miniGames, shake to restart
+
 
 	//Thanks to jmpp from stackoverflow for the shake detection code
 	float accelerometerUpdateInterval = 1.0f / 60.0f;
