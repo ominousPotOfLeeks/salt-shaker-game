@@ -8,21 +8,22 @@ public class saltWrangler : MonoBehaviour {
 
 	public GameObject Cat;
 	public Text DebugText;
-	public float catRarity;//1 in catRarity chance of salt being a cat.
+	public float catRarity;//There is a one-in-catRarity chance of salt being a cat. The more you know
 
 	public float saltScale;//size of salt
 	public float saltScaleVariation;//variation in salt size
 	public int saltDensity;//amount of salt produced at once
 
-	public void makeThings ()
+	public void makeThings (float multiplier = 1f)
 	{
-		for (int i = 0; i < saltDensity; i++) {
+		float scaleMult = Mathf.Sqrt (multiplier);
+		for (int i = 0; i < saltDensity * multiplier; i++) {
 			if (Mathf.Floor(Random.Range(0,catRarity)) == 0) {
 				//spawn cat
 				makeCat (gameObject.transform.position.x, gameObject.transform.position.y, saltScale, 10f);
 			} else {
 				//just salt
-				makeSalt (gameObject.transform.position.x, gameObject.transform.position.y, saltScale, 10f);
+				makeSalt (gameObject.transform.position.x, gameObject.transform.position.y, saltScale * scaleMult, 10f);
 			}
 		}
 	}
