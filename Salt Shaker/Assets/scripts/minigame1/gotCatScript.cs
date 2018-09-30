@@ -7,6 +7,8 @@ public class gotCatScript : MonoBehaviour {
 	//You unlocked the ability to buy cats, so return to the main game
 
 	public GameObject shaker;
+	public float animationSpeed = 5f;
+	public float finalScale = 800f;
 
 	float initialScale;
 
@@ -16,14 +18,15 @@ public class gotCatScript : MonoBehaviour {
 	}
 
 	void Update () {
-		if (transform.localScale.x > initialScale*15f) {
+		if (transform.localScale.x > initialScale*finalScale) {
 			//once big enough, go somewhere else
 			SceneManager.LoadScene ("mainGame", LoadSceneMode.Single);
 			shopController.shopOpen = true;
 		} else {
 			//spin and expand 
-			transform.Rotate (Vector3.up * Time.deltaTime, Space.World);
-			transform.localScale += new Vector3 (initialScale, initialScale, initialScale) * Time.deltaTime;
+			transform.Rotate (Vector3.forward * Time.deltaTime * 400f, Space.World);
+			transform.localScale += new Vector3 (initialScale, initialScale, initialScale) * Time.deltaTime * animationSpeed;
+			animationSpeed *= 1.02f;
 		}
 	}
 }
