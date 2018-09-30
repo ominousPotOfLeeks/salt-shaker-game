@@ -26,7 +26,7 @@ public class gotCatScript : MonoBehaviour {
 			//spin and expand 
 			transform.Rotate (Vector3.forward * Time.deltaTime * 400f, Space.World);
 			transform.localScale += new Vector3 (initialScale, initialScale, initialScale) * Time.deltaTime * animationSpeed;
-			animationSpeed *= 1.02f;
+			animationSpeed *= 1.1f;
 		}
 	}
 }
