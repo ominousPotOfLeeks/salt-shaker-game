@@ -38,7 +38,7 @@ public class playBtn : MonoBehaviour {
 		RaycastHit raycastHit;
 		if (Physics.Raycast(raycast, out raycastHit))
 		{
-			if (raycastHit.collider.name == "play_box") {
+			if (raycastHit.collider.name == this.name) {
 				return true;
 			}
 		}

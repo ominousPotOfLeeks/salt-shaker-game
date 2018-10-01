@@ -53,7 +53,6 @@ public class inputToSalt : MonoBehaviour {
 		if (wiggleBuildUp <= 0) {
 			wiggleBuildUp = 0;
 		}
-		DebugText.text = wiggleBuildUp.ToString();
 	}
 
 	bool checkTouch()

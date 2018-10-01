@@ -7,15 +7,34 @@ public class shopController : MonoBehaviour {
 	//tracks salt consumed (score), deals with shop
 
 	public static bool shopOpen = false;//set to true when first non-salt (probably a cat) item is collected
+
 	public Text DebugText;
 	public Camera mainCamera;
-	public float transitionSpeed = 5f;
+	public GameObject arrow;
+
+	public float transitionSpeed = 15f;
+	float screenEdge;
+
+	bool shopBrowsing = false; // user is looking at shop
+	bool inTransition = false; // moving camera
+	bool arrowDrawn = false;
+
+	void Start () {
+		screenEdge = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0)).x;
+		//basically redundant as the world position of the screen edge shouldn't change
+	}
 
 	void Update () {
 		if (shopOpen) {
-			showShopIndicator ();
-			if (shopTouched ()) {
-				openShop ();
+			if (shopBrowsing) {
+				
+			} else {
+				showShopIndicator ();
+				if (shopTouched () || inTransition) {
+					hideShopIndicator ();
+					inTransition = true;
+					openShop ();
+				}
 			}
 		}
 	}
@@ -34,6 +53,16 @@ public class shopController : MonoBehaviour {
 	void showShopIndicator () {
 		//some kind of blinking arrow or indicator
 		DebugText.text = "shop open";
+		DebugText.text += screenEdge.ToString ();
+		if (!arrowDrawn) {
+			Instantiate (arrow, new Vector3 (screenEdge-1.5f, 0, 0), Quaternion.identity);
+			DebugText.text += screenEdge.ToString ();
+			arrowDrawn = true;
+		}
+	}
+	void hideShopIndicator () {
+		//hide the blinking arrow
+		DebugText.text = "shop opening";
 	}
 
 	void openShop () {
@@ -41,6 +70,12 @@ public class shopController : MonoBehaviour {
 		DebugText.text = "moving camera" + mainCamera.transform.position.x.ToString() + gameObject.transform.position.x.ToString();
 		if (mainCamera.transform.position.x < gameObject.transform.position.x) {
 			mainCamera.transform.Translate (new Vector3 (transitionSpeed * Time.deltaTime, 0, 0));
+		} else {
+			inTransition = false;
+			shopBrowsing = true;
+			mainCamera.transform.position = new Vector3 (gameObject.transform.position.x, 
+														 mainCamera.transform.position.y, 
+														 mainCamera.transform.position.z);
 		}
 	}
 

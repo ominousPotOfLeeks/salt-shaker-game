@@ -7,6 +7,6 @@ public class cullSalt : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 		Destroy (col.gameObject);
-		Debug.Log("Destroyed" + col.gameObject.name);
+		//Debug.Log("Destroyed" + col.gameObject.name);
 	}
 }
