@@ -25,7 +25,7 @@ public class arrow : MonoBehaviour {
 	}
 
 	void Update () {
-		DebugText.text = initialx.ToString() + ", " + gameObject.transform.localPosition.x.ToString();
+		//DebugText.text = initialx.ToString() + ", " + gameObject.transform.localPosition.x.ToString();
 
 		//move arrow
 		if ((direction * gameObject.transform.localPosition.x < direction * initialx)) {
